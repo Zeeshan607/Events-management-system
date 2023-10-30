@@ -27,9 +27,9 @@ class AdminsTableSeeder extends Seeder
 //        ]);
         \DB::table('admins')->insert([
             'name' => 'Muhammad Zeeshan(Bc190402071)',
-            'email' => 'bc190402071@vu.edu.pk',
+            'email' => 'admin@ems.com',
             "image"=>"profile-placeholder.jpg",
-            'password' => Hash::make('Pakistan@786'),
+            'password' => Hash::make('ems-2023'),
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
         ]);

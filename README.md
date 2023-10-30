@@ -26,8 +26,8 @@ Event space is an application which facilitates its user with knowledge of upcom
 
 ## Default Admin credentials (if given database .sql backup file is used)
 
-- 'email' => 'muhammadzeeshan5420@gmail.com'
-- 'password' => 'Shani-1998'
+- 'email' => 'admin@ems.com'
+- 'password' => 'ems-2023'
 
 
 ##Setup (Fresh)
