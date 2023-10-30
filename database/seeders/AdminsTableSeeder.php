@@ -29,7 +29,7 @@ class AdminsTableSeeder extends Seeder
             'name' => 'Muhammad Zeeshan(Bc190402071)',
             'email' => 'admin@ems.com',
             "image"=>"profile-placeholder.jpg",
-            'password' => Hash::make('ems-2023'),
+            'password' => Hash::make('Ems-2023'),
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
         ]);
