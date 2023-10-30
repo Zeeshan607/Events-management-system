@@ -1,0 +1,17 @@
+.content-container{
+    background-color: white;
+    padding:15px;
+}
+
+.organizer-card .col{
+    box-sizing: content-box;
+}
+
+
+.event-img{
+    width:100%;
+    height:400px;
+}
+.event-share{
+    font-size: 22px;
+}
