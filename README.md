@@ -3,6 +3,11 @@
 
 <h1 align="center">Event Space</h1>  
 
+##Note
+If anybody is visiting this project to check my git commits record. I want to point out that I uploaded this project on Git Hub after completing the development process. 
+I didn't use git while developing this project because I had to submit it to the university and we were not allowed to use any extra tools except the allowed ones. 
+
+
 ## About 
 
 Event space is an application which facilitates its user with knowledge of upcoming events related to their interest around them
@@ -41,10 +46,10 @@ Event space is an application which facilitates its user with knowledge of upcom
 
 
 ## Routes
-
 - User can [Register](http://localhost/event-management-system/register) at http://appurl/register
 - User can [Login](http://localhost/event-management-system/login)  at http://appurl/login
 - Event Organizer can  [Register](http://localhost/event-management-system/eo/register) at http://appurl/eo/register
 - Event organizer can [Login](http://localhost/event-management-system/eo/login) at http://appurl/eo/login
 - Admin can [Login](http://localhost/event-management-system/admin/login) at http://appurl/admin/login
+
 
