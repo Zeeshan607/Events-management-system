@@ -10,9 +10,9 @@ I didn't use git while developing this project because I had to submit it to the
 
 ## About 
 
-Event space is an application which facilitates its user with knowledge of upcoming events related to their interest around them
+Event space is an application that facilitates its user with knowledge of upcoming events related to their interest them
 
-##App Details
+## App Details
 
 - Language: PHP v8.0 
 - Framework: Laravel 9
@@ -20,13 +20,13 @@ Event space is an application which facilitates its user with knowledge of upcom
 - Database: MySQL
 
 
-##Setup (via provided .sql database backup file )
+## Setup (via provided .sql database backup file )
 
-- Create database in mySQL with name of "event_management_system".
-- import the database .sql file and match phpmyadmin credentials in .env file.
-- Check the application code if node_modules and vendor folder is available, if not then run following commands in terminal 1. **npm install**, 2. **npm run build**, 3. **composer install**.
-- After that before running application clear your browser cache completely to avoid cache conflicts, for application cache run 1. **php artisan optimize:clear** 2. **composer dump-autoload**.
-- then just open app in browser using "php artisan serve" command or with custom virtual host name.
+- Create a database in MySQL with the name "event_management_system".
+- import the database .sql file and match PHPMyAdmin credentials in the .env file.
+- Check the application code if node_modules and vendor folder are available, if not then run the following commands in the terminal 1. **npm install**, 2. **npm run build**, 3. **composer install**.
+- After that before running the application clear your browser cache completely to avoid cache conflicts, for application cache run 1. **php artisan optimize: clear** 2. **composer dump-autoload**.
+- then just open the app in the browser using the "php artisan serve" command or with a custom virtual hostname.
 - Enjoy app.
 
 ## Default Admin credentials (if given database .sql backup file is used)
@@ -35,11 +35,11 @@ Event space is an application which facilitates its user with knowledge of upcom
 - 'password' => 'ems-2023'
 
 
-##Setup (Fresh)
+## Setup (Fresh)
 
-- Create database in mySQL with name of "event_management_system".
-- Open project code in your favorite IDE. open .env file and add database credentials also add pusher and Mailgun account's credentials.
-- After this run following commands in App terminal 
+- Create a database in MySQL with the name "event_management_system".
+- Open project code in your favorite IDE. open the .env file and add database credentials also add pusher and Mailgun account credentials.
+- After this run the following commands in the App terminal 
 1. **npm install**, 2.**npm run build**, 3.**composer install**, 4.**composer dump-autoload**, 5.**php artisan key:generate**, 6.**php artisan migrate**, 7.**php artisan db:seed** 8. **php artisan serve**.
 - Visit the App folder /database/seeder/ for  default login credentials of all Roles e.g, Admin, Event Organizer, User
 - Enjoy app.
