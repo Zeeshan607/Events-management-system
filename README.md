@@ -24,7 +24,7 @@ Event space is an application which facilitates its user with knowledge of upcom
 - then just open app in browser using "php artisan serve" command or with custom virtual host name.
 - Enjoy app.
 
-## Default Admin credentials (if given database .sql backup file is used)
+## Default Admin credentials (if given database .sql backup file or laravel seeders are used)
 
 - 'email' => 'admin@ems.com'
 - 'password' => 'ems-2023'
