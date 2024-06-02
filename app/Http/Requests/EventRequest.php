@@ -28,7 +28,7 @@ class EventRequest extends FormRequest
                 return[
                     "title"=>["required", "string"],
                     "datetime"=>["required","date_format:Y-m-d\TH:i"],
-                    "image"=>["required","image","mimes:jpeg,png,jpg","max:2048"],
+                    "image"=>["required","image","mimes:jpeg,png,jpg,webp","max:2048"],
                     "city"=>["required","string","max:255"],
                     "country"=>["required","string","max:255"],
                     "address"=>["required","string"],
@@ -39,7 +39,7 @@ class EventRequest extends FormRequest
                 return[
                     "title"=>["required", "string"],
                     "datetime"=>["nullable","date_format:Y-m-d\TH:i"],
-                    "image"=>["nullable","image","mimes:jpeg,png,jpg","max:2048"],
+                    "image"=>["nullable","image","mimes:jpeg,png,jpg,webp","max:2048"],
                     "city"=>["required","string","max:255"],
                     "country"=>["required","string","max:255"],
                     "address"=>["required","string"],

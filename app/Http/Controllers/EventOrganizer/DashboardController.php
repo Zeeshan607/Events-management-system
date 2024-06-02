@@ -28,7 +28,7 @@ class DashboardController extends Controller
         //
         $data["users_count"]=User::count();
         $data["users_registered_in_last_week"]=User::whereDate('created_at', '>=', date('Y-m-d H:i:s',strtotime('-7 days')) )->count();
-        $data["events_count"]=Event::where("event_organizer_id",Auth::guard('event_organizer')->where("is_approved",true)->user()->id)->count();
+        $data["events_count"]=Event::where("event_organizer_id",Auth::guard('event_organizer')->user()->id)->where("is_approved",true)->count();
         $data["events_published_in_last_week"]=Event::whereDate('created_at', '>=', date('Y-m-d H:i:s',strtotime('-7 days')) )->count();
         return view("eo.dashboard",$data);
     }

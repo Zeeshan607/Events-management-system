@@ -200,7 +200,7 @@
                                     <div v-else>
                                         <div class="chat-placeholder  d-flex flex-column align-items-center justify-content-center p-5">
                                             <img :src="this.img_src+'/home/logo-colored.png'" class="chat-placeholder" alt="placeholder image here" />
-                                            <b>Chat system developed by BC190402071</b>
+                                            <b>Chat system developed by <a href="https://muhammadzeeshan.dev">Muhammad Zeeshan</a></b>
                                         </div>
                                     </div>
 

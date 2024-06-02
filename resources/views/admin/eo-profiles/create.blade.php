@@ -9,7 +9,7 @@
     <div class="container-fluid content-container">
         <div class="row mx-0">
             <div class="col-12">
-                <h1>Edit</h1>
+                <h1>Create</h1>
                 <div id="err"></div>
             </div>
         </div>
@@ -53,9 +53,7 @@
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-0 pe-md-2 pe-lg-2">
                             <div class="form-group ">
                                 <label for="country">Country</label>
-                                <select name="country" id="country"  class="form-select" onChange="fetch_cities($(this).val())">
-                                    <option value="null" selected>--Select--</option>
-                                </select>
+                                <input type="text" name="country" id="country" value="Pakistan"  class="form-control" />
                                 @error('country')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -99,6 +97,7 @@
         $(document).ready(function(){
             $.getJSON("{{asset('APi/countries+cities.json')}}", function(data){
                 data.map(function(obj, i) {
+
                     if(obj.name=="Pakistan") {
 
                         $('#country').val(obj.name);
