@@ -16,15 +16,7 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-//        \DB::table('admins')->insert([
-//            'name' => 'Muhammad Zeeshan',
-//            'email' => 'muhammadzeeshan5420@gmail.com',
-//            "image"=>"profile-placeholder.jpg",
-//            'password' => Hash::make('Pakistan@786'),
-//            'created_at'=>Carbon::now(),
-//            'updated_at'=>Carbon::now(),
-//        ]);
+
         \DB::table('admins')->insert([
             'name' => 'Muhammad Zeeshan(Bc190402071)',
             'email' => 'admin@ems.com',
