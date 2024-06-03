@@ -23,12 +23,14 @@
                                 <div class="text-center">
                                     <img src="{{asset("dashboard/assets/img/avatars/avatar.jpg")}}" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
                                 </div>
+                                <div class="alert alert-info">
+                                    <span><b>Note:</b> Admin credentials are prefilled just press login to get to the admin panel</span>
+                                </div>
                                 <form method="POST" action="{{ route('admin.login') }}">
                                     @csrf
-
                                     <div class="mb-3">
                                         <label class="form-label">Email</label>
-                                        <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input id="email" type="email" class="form-control form-control-lg @error('email')  is-invalid @enderror" name="email" value="admin@ems.com" readonly required autocomplete="email" autofocus>
 
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -38,7 +40,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Password</label>
-                                        <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                        <input id="password" type="password" value="Ems-2023"  class="form-control form-control-lg @error('password')  is-invalid @enderror"  readonly name="password" required autocomplete="current-password">
 
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
