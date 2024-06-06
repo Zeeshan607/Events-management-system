@@ -41,25 +41,31 @@ class ChatController extends Controller
             "to"=>"required",
             'body'=>"required",
             ]);
+        try{
+            $data=$request->except('_token');
 
-        $data=$request->except('_token');
-        if(!$request->has('conversation_id')){
-            $con=new Conversation();
-            $con->sender=$data["from"];
-            $con->receiver=$data['to'];
-            $con->sender_type="user";
-            $con->user_last_seen_at=Carbon::now();
-            $con->save();
-        }else{
-            $con=Conversation::findOrFail($request->conversation_id);
+            if(!$request->has('conversation_id')){
+                $con=new Conversation();
+                $con->sender=$data["from"];
+                $con->receiver=$data['to'];
+                $con->sender_type="user";
+                $con->user_last_seen_at=Carbon::now();
+                $con->save();
+            }else{
+                $con=Conversation::findOrFail($request->conversation_id);
+            }
+            $con_id=$con->id;
+            $data['conversation_id']=$con->id;
+            $msg= new Message();
+            $msg->fill($data);
+            $msg->save();
+
+            broadcast(new EoHasNewMessageEvent($request->to, $con, $msg))->toOthers();
+
+        }catch(\Exception $ex){
+            throw new \Exception($ex->getMessage());
         }
-        $con_id=$con->id;
-        $data['conversation_id']=$con->id;
-        $msg= new Message();
-        $msg->fill($data);
-        $msg->save();
 
-        broadcast(new EoHasNewMessageEvent($request->to, $con, $msg))->toOthers();
         return response()->json(["success"=>"Message send successfully",'message'=>$msg,'conversation_id'=>$con_id,"conversation"=>$con],200);
 
 

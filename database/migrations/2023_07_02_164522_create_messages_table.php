@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-//            $table->bigInteger('chat_id')->nullable();
             $table->foreignUuid('conversation_id')
                 ->constrained()
                 ->cascadeOnDelete();
             $table->uuid("from");
-            $table->uuid("to");
+//            $table->uuid("to");
             $table->longText("body")->nullable();
             $table->timestamps();
         });
