@@ -60,7 +60,7 @@ class ChatController extends Controller
         $msg->save();
 
         broadcast(new EoHasNewMessageEvent($request->to, $con, $msg))->toOthers();
-        return response()->json(["success"=>"Message send successfully",'message'=>$msg,'conversation_id'=>$con_id],200);
+        return response()->json(["success"=>"Message send successfully",'message'=>$msg,'conversation_id'=>$con_id,"conversation"=>$con],200);
 
 
     }

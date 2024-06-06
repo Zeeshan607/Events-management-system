@@ -23,7 +23,7 @@ class EventOrganizersTableSeeder extends Seeder
           [
                   "id"=>"201b77e1-268c-45cc-b5ad-8baa8ee9c749",
                   "name"=>"EO321",
-                  "email"=>"EO321@organizer.com",
+                  "email"=>"eo321@organizer.com",
                   "country"=>'Pakistan',
                   "city"=>'Islamabad',
                   "image"=>"profile-placeholder.jpg",

@@ -80,7 +80,7 @@ class EventOrganizerRegisterController extends Controller
     {
         return EventOrganizer::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'email' => strtolower($data['email']),
             'country'=>$data['country'],
             'city'=>$data['city'],
             "image"=>"profile-placeholder.jpg",

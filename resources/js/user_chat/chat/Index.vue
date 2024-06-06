@@ -67,7 +67,7 @@
 
                         <div class="chat-wrapper">
 
-                                <div class="message " v-for="msg in this.messages" :id="msg.id" v-bind:class="[(msg.from == this.auth_user_id)?'send' :'received']" >
+                                <div class="message" v-if="this.messages.length >0" v-for="msg in this.messages" :id="msg.id" v-bind:class="[(msg.from == this.auth_user_id)?'send' :'received']" >
                                     <p>{{msg.body}}</p>
                                     <div class="d-flex flex-row justify-content-end mx-0 align-items-center">
                                         <p class="msg-time">{{ formatTimestamp(msg.created_at) }}</p>
@@ -80,6 +80,9 @@
                                     </div>
 
                                 </div>
+                            <div v-else>
+                                <p class="text-success text-center m-0 p-0 ">Be first to start conversation</p>
+                            </div>
 
                             <div id="scroll_ref"></div>
                         </div>
@@ -129,26 +132,27 @@ export default {
 // },
     mounted() {
         var app=this;
-        console.log('User chat mounted')
+        // console.log('User chat mounted')
         this.getEoProfile();
         this.getUserProfile();
         this.getTodayDateTime();
         axios.get(servername+'/get_chat/?user='+this.auth_user_id+"&eo="+this.eo_id).then(resp=>{
-            this.conversation=resp.data.conversation;
-            this.messages=resp.data.conversation.messages??[];
+            this.conversation=resp.data.conversation??resp.data.conversation;
+            // console.log(resp.data)
+            this.messages=resp.data.conversation?.messages??[];
             this.loading=false;
             setTimeout(function(){
                 app.scrollMsgToView();
             },500);
         }).catch(err=>{
-            console.log(err)
-            // swal.fire({
-            //     title: 'Error!',
-            //     text: err.message +" Please contact system Administrator",
-            //     icon: 'error',
-            // }).then(function(){
-            //     window.location.reload();
-            // })
+            // console.log(err)
+            swal.fire({
+                title: 'Error!',
+                text: err.message +" Please contact system Administrator",
+                icon: 'error',
+            }).then(function(){
+                window.location.reload();
+            })
             this.loading=false;
         })
 
@@ -160,7 +164,7 @@ export default {
         }
 
         //
-        Pusher.logToConsole = true;
+        // Pusher.logToConsole = true;
         window.Echo.private('User-'+ this.auth_user_id )
             .listen(`.UserHasNewMessage`,function(e){
                    app.messages.push(e.message)
@@ -197,7 +201,9 @@ export default {
                 let app=this;
                axios.post(servername+"/send_sms",data).then(resp=>{
                    this.messages.push(resp.data.message)
+                   // console.log(resp.data)
                    this.conversation_id=resp.data.conversation_id;
+                   this.conversation=resp.data.conversation;
                    $(e.target).find("#msg").val('');
                    setTimeout(function(){
                        app.scrollMsgToView()
@@ -205,41 +211,41 @@ export default {
                    $(btn).html(sendBtnText);
                    $(btn).removeClass("disabled");
                },(servErr)=>{
-                   // console.log(servErr.response.data.message);
-                   if(servErr.response.status==404){
-                       swal.fire({
-                           title: 'Error!',
-                           text: "something went wrong or this conversation is deleted by other participant: Please contact system Administrator or try again",
-                           icon: 'error',
-                       }).then(function(){
-                           window.location.reload();
-                       });
-                   }else{
-                       swal.fire({
-                           title: 'Error!',
-                           text: servErr.response.data.message+": Please contact system Administrator or try again",
-                           icon: 'error',
-                       }).then(function(){
-                           window.location.reload();
-                       });
-                   }
+                       // console.log(servErr.response.data.message);
+                       if(servErr.response.status==404){
+                           swal.fire({
+                               title: 'Error!',
+                               text: "something went wrong or this conversation is deleted by other participant: Please contact system Administrator or try again",
+                               icon: 'error',
+                           }).then(function(){
+                               window.location.reload();
+                           });
+                       }else{
+                           swal.fire({
+                               title: 'Error!',
+                               text: servErr.response.data.message+": Please contact system Administrator or try again",
+                               icon: 'error',
+                           }).then(function(){
+                               window.location.reload();
+                           });
+                       }
 
-                   $(e.target).val('');
-                   $(btn).html(sendBtnText);
-                   $(btn).removeClass("disabled");
+                       $(e.target).val('');
+                       $(btn).html(sendBtnText);
+                       $(btn).removeClass("disabled");
                }).catch(err=>{
                         // console.log(err)
-                   swal.fire({
-                       title: 'Error!',
-                       text: "Oops something went wrong. Please contact system Administrator or try again",
-                       icon: 'error',
-                   }).then(function(){
-                       window.location.reload();
-                   })
-                   $(e.target).val('');
-                   $(btn).html(sendBtnText);
-                   $(btn).removeClass("disabled");
-               });
+                       swal.fire({
+                           title: 'Error!',
+                           text: "Oops something went wrong. Please contact system Administrator or try again",
+                           icon: 'error',
+                       }).then(function(){
+                           window.location.reload();
+                       })
+                       $(e.target).val('');
+                       $(btn).html(sendBtnText);
+                       $(btn).removeClass("disabled");
+                   });
         },
         getEoProfile(){
             axios.get(servername+ "/getEoProfile/?id="+ this.eo_id ).then(resp=>{
@@ -287,7 +293,7 @@ export default {
                 }).then(function(){
                     window.location.reload();
                 })
-                console.log(this.errors);
+                // console.log(this.errors);
             });
         },
         markAsRead:function(conv_id){

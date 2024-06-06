@@ -36,8 +36,8 @@ class EventOrganizerLoginController extends Controller
             'password' => 'required|min:8'
         ]);
 
-        if (Auth::guard('event_organizer')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-
+        if (Auth::guard('event_organizer')->attempt(['email' =>$request->email, 'password' => $request->password], $request->get('remember'))) {
+//            dd("in login func..");
             return redirect()->intended($this->redirectTo);
         }
         return back()->withInput($request->only('email', 'remember'))->withErrors(["Incorrect Credentials"]);

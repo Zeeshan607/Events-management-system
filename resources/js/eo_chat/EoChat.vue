@@ -270,8 +270,22 @@ const sendBtnText="<i class='fa fa-paper-plane me-2'></i>SEND"
                     this.loading=false;
                 },(servErr)=>{
                     console.log(servErr);
+                swal.fire({
+                    title: 'Error!',
+                    text: servErr.message +" Please contact system Administrator",
+                    icon: 'error',
+                }).then(function(){
+                    window.location.reload();
+                })
                 }).catch(err=>{
-                    console.log(err);
+                swal.fire({
+                    title: 'Error!',
+                    text: err.message +" Please contact system Administrator",
+                    icon: 'error',
+                }).then(function(){
+                    window.location.reload();
+                })
+                    // console.log(err);
                 });
 
             // Pusher.logToConsole=true;
@@ -478,7 +492,7 @@ const sendBtnText="<i class='fa fa-paper-plane me-2'></i>SEND"
                 }).then(resp=> {
                     if (resp.isConfirmed) {
                         axios.post(servername + "/eo/inbox/delete_conversation", data).then(resp => {
-                            console.log(resp)
+                            // console.log(resp)
                             if(resp.status==200){
                                 swal.fire(
                                     'Success',
