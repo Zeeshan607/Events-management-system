@@ -41,9 +41,10 @@ class ChatController extends Controller
             "to"=>"required",
             'body'=>"required",
             ]);
-        try{
-            $data=$request->except('_token');
+//        try{
 
+
+            $data=$request->except('_token');
             if(!$request->has('conversation_id')){
                 $con=new Conversation();
                 $con->sender=$data["from"];
@@ -62,9 +63,10 @@ class ChatController extends Controller
 
             broadcast(new EoHasNewMessageEvent($request->to, $con, $msg))->toOthers();
 
-        }catch(\Exception $ex){
-            throw new \Exception($ex->getMessage());
-        }
+
+//        }catch(\Exception $ex){
+//            throw new \Exception($ex->getMessage());
+//        }
 
         return response()->json(["success"=>"Message send successfully",'message'=>$msg,'conversation_id'=>$con_id,"conversation"=>$con],200);
 
