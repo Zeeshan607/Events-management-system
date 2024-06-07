@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="col-10 p-0 d-flex flex-column justify-content-center">
                                         <h5><b>{{ conv.sender_profile.name }}</b> </h5>
-                                        <span id="recent-msg">{{ conv.messages?conv.messages[conv.messages.length -1].body:''}}</span>
+                                        <span id="recent-msg">{{ conv.messages?(conv.messages[conv.messages.length -1].body??''):''}}</span>
                                     </div>
                                 </div>
 
