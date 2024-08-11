@@ -5,3 +5,23 @@
     font-weight: bold;
     font-size: 48px;
 }
+
+.project-static-banner{
+    position:fixed;
+    right:0px;
+    z-index:10;
+    top:30%;
+    text-wrap: normal;
+    width:200px;
+    padding:15px;
+    box-shadow: 0px 0px 5px #bdbdbd;
+    background-color:white;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius:10px ;
+}
+@media screen and (max-width:768px){
+    .project-static-banner{
+        display: none;
+    }
+
+}

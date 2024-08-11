@@ -1,1 +1,1 @@
-.interested-pretty-icon label{margin-left:20px}.se-title h1{font-weight:700;font-size:48px}
+.interested-pretty-icon label{margin-left:20px}.se-title h1{font-weight:700;font-size:48px}.project-static-banner{position:fixed;right:0;z-index:10;top:30%;text-wrap:normal;width:200px;padding:15px;box-shadow:0 0 5px #bdbdbd;background-color:#fff;border-bottom-left-radius:10px;border-top-left-radius:10px}@media screen and (max-width:768px){.project-static-banner{display:none}}
